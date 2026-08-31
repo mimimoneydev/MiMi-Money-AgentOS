@@ -1,0 +1,28 @@
+[project]
+name = "mimi-adk-runtime"
+version = "1.0.0"
+description = "MiMi Money AgentOS — Google ADK financial agent runtime (Gemini-powered). Executes real google-adk LlmAgents for the MiMi workforce; every privileged tool call is routed BACK through the MiMi Agent Gateway."
+readme = "README.md"
+requires-python = ">=3.11"
+license = { text = "MIT" }
+dependencies = [
+  "google-adk>=1.0.0",
+  "fastapi>=0.115",
+  "uvicorn>=0.30",
+  "httpx>=0.27",
+  "pydantic>=2.7",
+]
+
+[project.optional-dependencies]
+dev = ["pytest>=8", "pytest-asyncio>=0.23"]
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[tool.hatch.build.targets.wheel]
+packages = ["mimi_adk"]
+
+[tool.pytest.ini_options]
+asyncio_mode = "auto"
+testpaths = ["tests"]
